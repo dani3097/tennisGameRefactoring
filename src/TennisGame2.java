@@ -60,16 +60,19 @@ public class TennisGame2 implements TennisGame
 	}
 
 	private String advantage(String score) {
-		if (player1points > player2points && player2points >= 3)
-        {
+		if (isAdvantage(player1points,player2points))
             score = "Advantage player1";
-        }
-        
-        if (player2points > player1points && player1points >= 3)
-        {
+        if (isAdvantage(player2points,player1points))
             score = "Advantage player2";
-        }
 		return score;
+	}
+
+	private boolean isAdvantage1() {
+		return player2points > player1points && player1points >= 3;
+	}
+
+	private boolean isAdvantage(int firstPlayerPoints, int secondPlayerPoints) {
+		return firstPlayerPoints > secondPlayerPoints && secondPlayerPoints >= 3;
 	}
 
 	private String deuce(String score) {
