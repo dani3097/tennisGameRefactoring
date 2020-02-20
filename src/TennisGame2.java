@@ -19,9 +19,9 @@ public class TennisGame2 implements TennisGame
 		
 		if (isTie())
 			score = getLiteral(player1points)+"-All";
-		
-        score = deuce(score);
-        
+	
+		if (isDeuce())
+		score = "Deuce";
         score = normal(score);
 
 		if (isAdvantage(player1points,player2points))
@@ -66,12 +66,6 @@ public class TennisGame2 implements TennisGame
 
 	private boolean isAdvantage(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints > secondPlayerPoints && secondPlayerPoints >= 3;
-	}
-
-	private String deuce(String score) {
-		if (isDeuce())
-            score = "Deuce";
-		return score;
 	}
 
 	private boolean isDeuce() {
