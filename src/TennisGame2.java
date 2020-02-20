@@ -38,13 +38,17 @@ public class TennisGame2 implements TennisGame
     }
 
 	private String normal(String score) {
-		if (player1points != player2points)
+		if (isNormal())
         {
             P2res = getLiteral(player2points);
             P1res = getLiteral(player1points);
             score = P1res + "-" + P2res;
         }
 		return score;
+	}
+
+	private boolean isNormal() {
+		return player1points != player2points;
 	}
 
 	private String getLiteral(int playerPoints) {
