@@ -20,8 +20,12 @@ public class TennisGame2 implements TennisGame
         score = deuce(score);
         
         score = normal(score);
+
+		if (isAdvantage(player1points,player2points))
+		    score = "Advantage player1";
+		if (isAdvantage(player2points,player1points))
+		    score = "Advantage player2";
         
-        score = advantage(score);
 		if (isWinner(player1points,player2points))
 		    score = "Win for player1";
 		if (isWinner(player2points,player1points))
@@ -57,18 +61,6 @@ public class TennisGame2 implements TennisGame
 
 	private boolean isWinner(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints>=4 && secondPlayerPoints>=0 && (firstPlayerPoints-secondPlayerPoints)>=2;
-	}
-
-	private String advantage(String score) {
-		if (isAdvantage(player1points,player2points))
-            score = "Advantage player1";
-        if (isAdvantage(player2points,player1points))
-            score = "Advantage player2";
-		return score;
-	}
-
-	private boolean isAdvantage1() {
-		return player2points > player1points && player1points >= 3;
 	}
 
 	private boolean isAdvantage(int firstPlayerPoints, int secondPlayerPoints) {
