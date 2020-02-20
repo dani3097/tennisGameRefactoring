@@ -14,27 +14,24 @@ public class TennisGame2 implements TennisGame
         this.player2Name = player2Name;
     }
 
-    public String getScore(){
-        String score = "";
-		
+    public String getLiteralScore(){
+        String literalScore = "";
+    	if (isNormal())
+		    literalScore = getLiteral(player1points) + "-" + getLiteral(player2points);
 		if (isTie())
-			score = getLiteral(player1points)+"-All";
-	
+			literalScore = getLiteral(player1points)+"-All";
 		if (isDeuce())
-		score = "Deuce";
-		if (isNormal())
-		    score = getLiteral(player1points) + "-" + getLiteral(player2points);
-		if (isAdvantage(player1points,player2points))
-		    score = "Advantage player1";
-		if (isAdvantage(player2points,player1points))
-		    score = "Advantage player2";
+			literalScore = "Deuce";
+		if (isInAdvantageOver(player1points,player2points))
+		    literalScore = "Advantage player1";
+		if (isInAdvantageOver(player2points,player1points))
+		    literalScore = "Advantage player2";
+		if (isWinnerOver(player1points,player2points))
+		    literalScore = "Win for player1";
+		if (isWinnerOver(player2points,player1points))
+		    literalScore = "Win for player2";
         
-		if (isWinner(player1points,player2points))
-		    score = "Win for player1";
-		if (isWinner(player2points,player1points))
-		    score = "Win for player2";
-        
-        return score;
+        return literalScore;
     }
 
 	private boolean isNormal() {
@@ -54,11 +51,11 @@ public class TennisGame2 implements TennisGame
 		return result;
 	}
 
-	private boolean isWinner(int firstPlayerPoints, int secondPlayerPoints) {
+	private boolean isWinnerOver(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints>=4 && secondPlayerPoints>=0 && (firstPlayerPoints-secondPlayerPoints)>=2;
 	}
 
-	private boolean isAdvantage(int firstPlayerPoints, int secondPlayerPoints) {
+	private boolean isInAdvantageOver(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints > secondPlayerPoints && secondPlayerPoints >= 3;
 	}
 
