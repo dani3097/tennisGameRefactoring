@@ -22,8 +22,11 @@ public class TennisGame2 implements TennisGame
         score = normal(score);
         
         score = advantage(score);
+		if (isWinner(player1points,player2points))
+		    score = "Win for player1";
+		if (isWinner(player2points,player1points))
+		    score = "Win for player2";
         
-        score = win(score);
         return score;
     }
 
@@ -50,18 +53,6 @@ public class TennisGame2 implements TennisGame
 		if (playerPoints==3)
 			result = "Forty";
 		return result;
-	}
-
-	private String win(String score) {
-		if (isWinner(player1points,player2points))
-        {
-            score = "Win for player1";
-        }
-        if (isWinner(player2points,player1points))
-        {
-            score = "Win for player2";
-        }
-		return score;
 	}
 
 	private boolean isWinner(int firstPlayerPoints, int secondPlayerPoints) {
