@@ -22,8 +22,8 @@ public class TennisGame2 implements TennisGame
 	
 		if (isDeuce())
 		score = "Deuce";
-        score = normal(score);
-
+		if (isNormal())
+		    score = getLiteral(player1points) + "-" + getLiteral(player2points);
 		if (isAdvantage(player1points,player2points))
 		    score = "Advantage player1";
 		if (isAdvantage(player2points,player1points))
@@ -36,16 +36,6 @@ public class TennisGame2 implements TennisGame
         
         return score;
     }
-
-	private String normal(String score) {
-		if (isNormal())
-        {
-            P2res = getLiteral(player2points);
-            P1res = getLiteral(player1points);
-            score = P1res + "-" + P2res;
-        }
-		return score;
-	}
 
 	private boolean isNormal() {
 		return player1points != player2points;
