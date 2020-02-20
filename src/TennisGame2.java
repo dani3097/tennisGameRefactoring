@@ -34,8 +34,6 @@ public class TennisGame2 implements TennisGame
         return score;
     }
 
-	
-
 	private String normal(String score) {
 		if (player1points != player2points)
         {
@@ -74,7 +72,7 @@ public class TennisGame2 implements TennisGame
 	}
 
 	private String tie(String score) {
-		if (player1points == player2points && player1points < 4)
+		if (isTie())
         {
             if (player1points==0)
                 score = "Love";
@@ -85,6 +83,10 @@ public class TennisGame2 implements TennisGame
             score += "-All";
         }
 		return score;
+	}
+
+	private boolean isTie() {
+		return player1points == player2points && player1points < 4;
 	}
     
     public void SetP1Score(int number){
