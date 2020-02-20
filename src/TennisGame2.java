@@ -16,7 +16,10 @@ public class TennisGame2 implements TennisGame
 
     public String getScore(){
         String score = "";
-        score = tie(score);
+		
+		if (isTie())
+			score = getLiteral(player1points)+"-All";
+		
         score = deuce(score);
         
         score = normal(score);
@@ -68,20 +71,6 @@ public class TennisGame2 implements TennisGame
 	private String deuce(String score) {
 		if (player1points==player2points && player1points>=3)
             score = "Deuce";
-		return score;
-	}
-
-	private String tie(String score) {
-		if (isTie())
-        {
-            if (player1points==0)
-                score = "Love";
-            if (player1points==1)
-                score = "Fifteen";
-            if (player1points==2)
-                score = "Thirty";
-            score += "-All";
-        }
 		return score;
 	}
 
