@@ -69,9 +69,13 @@ public class TennisGame2 implements TennisGame
 	}
 
 	private String deuce(String score) {
-		if (player1points==player2points && player1points>=3)
+		if (isDeuce())
             score = "Deuce";
 		return score;
+	}
+
+	private boolean isDeuce() {
+		return player1points==player2points && player1points>=3;
 	}
 
 	private boolean isTie() {
